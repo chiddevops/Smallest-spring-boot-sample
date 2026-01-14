@@ -27,7 +27,7 @@ service:
             - spec:
                 connectorRef: Harness_docker
                 imagePath: chidaa/harness-demo
-                tag: v1.0
+                tag: V1.1
                 digest: ""
               identifier: dockerartifact
               type: DockerRegistry
