@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: target-infra
+  identifier: targetinfra
+  orgIdentifier: default
+  projectIdentifier: Microservices_Deployment
+  environmentRef: production
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: Kubernetes
+    namespace: harness-delegate-ng
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
