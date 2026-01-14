@@ -1,0 +1,36 @@
+service:
+  name: Kubernetes-service
+  identifier: Kubernetesservice
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: K8manifest
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: Harness_git
+                  gitFetchType: Branch
+                  paths:
+                    - k8s/springboot
+                  branch: testing-branch-18-11
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              optionalValuesYaml: false
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: Harness_docker
+                imagePath: chidaa/harness-demo
+                tag: v1.0
+                digest: ""
+              identifier: dockerartifact
+              type: DockerRegistry
+  gitOpsEnabled: false
+  orgIdentifier: default
+  projectIdentifier: Microservices_Deployment
